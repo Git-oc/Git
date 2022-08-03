@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.MemberDAO">
+
+    <insert id="insertMember">
+        insert into members(member_id,member_nick,member_gender,member_age,member_city)
+        values (#{id},#{nick},#{gender},#{age},#{city})
+    </insert>
+
+    <delete id="deleteMember">
+        delete from members
+        where member_id=#{id}
+    </delete>
+
+    <select id="listMember" resultType="po.Member">
+        select member_id id,member_nick nick,member_gender gender,member_age age,member_city city
+        from members
+    </select>
+
+    <update id="updateMember">
+        update members
+        set member_gender=#{gender},member_age=#{age},member_city=#{city}
+        where member_nick=#{nick}
+    </update>
+
+</mapper>

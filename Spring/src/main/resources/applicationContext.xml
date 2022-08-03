@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <!--声明使用注解配置-->
+        <context:annotation-config/>
+        <!--声明Spring工厂注解的扫描范围-->
+        <context:component-scan base-package="com.pojo"/>
+
+        <bean id="clazz" class="com.pojo.Clazz"/>
+        <bean id="stu" class="com.pojo.Student">
+                <property name="stuNum" value="1001"/>
+                <property name="stuName" value="夏明"/>
+                <property name="stuGender" value="女"/>
+                <property name="stuAge" value="18"/>
+                <property name="stuTime">
+                        <bean class="java.util.Date"/>
+                </property>
+                <!--自定义对象类型-->
+                <property name="clazz">
+                        <bean class="com.pojo.Clazz">
+                                <property name="classId" value="1314"/>
+                                <property name="className" value="java1班"/>
+                        </bean>
+                </property>
+                <!-- 集合类型-->
+                <property name="hobbies" value="java"/>
+                <property name="sets">
+                        <list>
+                                <bean class="com.pojo.Clazz">
+                                        <property name="classId" value="520"/>
+                                        <property name="className" value="java2班"/>
+                                </bean>
+                        </list>
+                </property>
+                <property name="maps">
+                        <map>
+                                <entry key="a" value="1314520"/>
+                        </map>
+                </property>
+        </bean>
+
+</beans>
